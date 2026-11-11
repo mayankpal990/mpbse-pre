@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f8f2">
+<title>BrightBoard — Class 12 Physics & Chemistry</title>
+<style>
+:root{--ink:#172d3b;--muted:#627581;--paper:#f7f8f2;--white:#fff;--blue:#dceeff;--blue2:#8db9ee;--mint:#dff4e9;--mint2:#91d6b4;--peach:#ffeadb;--yellow:#fff2bd;--line:#e4e9e5;--navy:#25465a;--shadow:0 12px 35px rgba(28,61,76,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,sans-serif;line-height:1.5}
+button,select{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1120px;margin:auto;padding:0 22px}.topbar{padding:18px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.5px;font-size:1.2rem}.logo{width:38px;height:38px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:1.15rem}.tiny{font-size:.82rem;color:var(--muted)}.pill{border-radius:99px;padding:7px 12px;background:#edf1e9;color:#42604e;font-size:.78rem;font-weight:800}
+.hero{background:linear-gradient(120deg,#e5f1ff 0%,#eff8ee 57%,#fff0df 100%);border:1px solid #e6eee7;border-radius:30px;padding:clamp(24px,5vw,54px);display:grid;grid-template-columns:1.35fr .65fr;gap:25px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+.eyebrow{text-transform:uppercase;letter-spacing:1.5px;font-size:.75rem;font-weight:900;color:#557c77}.hero h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.03;letter-spacing:-2px;margin:14px 0}.hero p{max-width:570px;color:#526875;font-size:1.03rem}.hero-art{display:flex;align-items:center;justify-content:center;min-height:180px}.orbit{width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.9);display:grid;place-items:center;position:relative}.book{width:112px;height:136px;background:#fff;border-radius:10px 17px 17px 10px;box-shadow:0 14px 20px #8da9a755;transform:rotate(-8deg);display:grid;place-items:center;font-size:2.5rem}.float{position:absolute;border-radius:15px;padding:10px 13px;background:#fff;box-shadow:var(--shadow);font-weight:900}.f1{top:25px;left:-7px}.f2{bottom:25px;right:-12px;background:var(--yellow)}
+section{margin:36px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:17px}.section-head h2{font-size:1.6rem;letter-spacing:-.7px;margin:0}.section-head p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.subjects{display:grid;grid-template-columns:1fr 1fr;gap:17px}.subject{border-radius:24px;padding:23px;border:1px solid var(--line);background:white;box-shadow:var(--shadow);text-align:left;transition:.18s}.subject:hover{transform:translateY(-3px)}.subject.selected{outline:3px solid var(--navy)}.subject-top{display:flex;align-items:center;justify-content:space-between}.subject-icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:1.6rem}.chem .subject-icon{background:var(--mint)}.phy .subject-icon{background:var(--blue)}.subject h3{font-size:1.3rem;margin:16px 0 4px}.subject p{color:var(--muted);margin:0 0 16px}.subject .link{font-weight:900;color:var(--navy)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,28px);box-shadow:var(--shadow)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 24px}.step{padding:13px;border-radius:15px;background:#f5f7f3;color:var(--muted);font-weight:800;font-size:.86rem}.step.active{background:var(--navy);color:white}.field-label{display:block;font-weight:900;margin:18px 0 10px}.chapter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice{padding:13px 14px;background:#f6f8f5;border:1px solid var(--line);border-radius:15px;text-align:left;color:var(--ink);font-weight:750;min-height:65px}.choice small{display:block;color:var(--muted);font-weight:500;margin-top:3px}.choice.active{background:var(--blue);border-color:#8eb9ed;box-shadow:inset 0 0 0 1px #8eb9ed}.modes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.mode{background:#fbf7ee;border:1px solid #efe8d8;border-radius:16px;padding:15px;text-align:left;min-height:115px}.mode:nth-child(2){background:#edf6ff}.mode:nth-child(3){background:#edf8f0}.mode:nth-child(4){background:#f9eff9}.mode.active{outline:2px solid var(--navy)}.mode .emoji{font-size:1.35rem}.mode strong{display:block;margin:5px 0}.mode small{color:var(--muted)}
+.time-options{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.time{border:1px solid var(--line);border-radius:15px;background:#fff;padding:13px;text-align:left}.time.active{background:var(--yellow);border-color:#e7c95d}.time strong{display:block}.time small{color:var(--muted)}
+.primary{background:var(--navy);color:#fff;padding:14px 20px;border-radius:14px;font-weight:900}.secondary{background:#edf2ed;color:var(--navy);padding:12px 16px;border-radius:13px;font-weight:850}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.result{display:none;margin-top:22px;background:linear-gradient(135deg,#eef7ff,#f1f8ef);border:1px solid #dce9e5;border-radius:20px;padding:22px}.result.show{display:block}.result h3{margin:0 0 5px}.result ul{padding-left:21px}.result li{margin:7px 0}.note{background:#fff6d9;border-radius:12px;padding:12px 14px;font-size:.86rem;color:#6c5b28;margin-top:12px}.footer{padding:28px 0 40px;color:var(--muted);font-size:.85rem}.footer strong{color:var(--ink)}.hidden{display:none!important}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero-art{min-height:145px}.orbit{width:160px;height:160px}.book{width:85px;height:105px}.subjects{grid-template-columns:1fr}.chapter-grid{grid-template-columns:repeat(2,1fr)}.modes,.time-options{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.step{padding:9px 12px}.section-head{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="wrap topbar">
+  <div class="brand"><div class="logo">✦</div> BrightBoard <span class="tiny">/ CLASS 12</span></div>
+  <span class="pill">LEARN • PRACTISE • REVISE</span>
+</header>
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Your calm corner for board prep</div>
+      <h1>Study smarter.<br><span style="color:#4c7c79">Feel ready.</span></h1>
+      <p>Physics and Chemistry, made less overwhelming. Pick your subject, choose what you need today, and get a focused study path that fits your time.</p>
+      <a href="#start" style="display:inline-block;text-decoration:none;margin-top:8px" class="primary">Build my study session ↘</a>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="orbit"><div class="book">✎</div><div class="float f1">+1% today</div><div class="float f2">You’ve got this ✨</div></div></div>
+  </div>
+
+  <section id="start">
+    <div class="section-head"><div><h2>What are we studying today?</h2><p>Start with a subject. You can change it any time.</p></div><span class="pill">MP BOARD • CLASS 12</span></div>
+    <div class="subjects">
+      <button class="subject chem" data-subject="chem"><div class="subject-top"><div class="subject-icon">🧪</div><span>01 / SUBJECT</span></div><h3>Chemistry</h3><p>Concepts, reactions, numericals and exam practice.</p><span class="link">Explore Chemistry →</span></button>
+      <button class="subject phy" data-subject="phy"><div class="subject-top"><div class="subject-icon">⚡</div><span>02 / SUBJECT</span></div><h3>Physics</h3><p>Understand the idea, practise problems, revise formulas.</p><span class="link">Explore Physics →</span></button>
+    </div>
+  </section>
+
+  <section id="planner" class="hidden">
+    <div class="section-head"><div><h2 id="plannerTitle">Build your session</h2><p id="plannerSub">Pick a chapter and a learning goal.</p></div><button class="secondary" id="changeSubject">Change subject</button></div>
+    <div class="panel">
+      <div class="steps"><div class="step active" id="step1">1. Choose chapter</div><div class="step" id="step2">2. Choose your goal</div><div class="step" id="step3">3. Choose your time</div></div>
+      <label class="field-label">Which chapter?</label>
+      <div class="chapter-grid" id="chapters"></div>
+      <label class="field-label">What do you want to do?</label>
+      <div class="modes" id="modes">
+        <button class="mode" data-mode="learn"><span class="emoji">🌱</span><strong>Learn from 0</strong><small>Start with the basics</small></button>
+        <button class="mode" data-mode="exam"><span class="emoji">🎯</span><strong>Exam prep</strong><small>High-yield practice</small></button>
+        <button class="mode" data-mode="revise"><span class="emoji">🔁</span><strong>Revision</strong><small>Recall what you know</small></button>
+        <button class="mode" data-mode="test"><span class="emoji">🧠</span><strong>Self-test</strong><small>Check your understanding</small></button>
+      </div>
+      <label class="field-label">How much time do you have?</label>
+      <div class="time-options" id="times">
+        <button class="time" data-time="10"><strong>⏱ Tiny time</strong><small>10 minutes</small></button>
+        <button class="time" data-time="25"><strong>☕ Small time</strong><small>25 minutes</small></button>
+        <button class="time active" data-time="45"><strong>🌿 Effective time</strong><small>45 minutes</small></button>
+        <button class="time" data-time="60"><strong>🚀 Deep session</strong><small>60 minutes</small></button>
+      </div>
+      <div class="actions"><button class="primary" id="generate">Create my study plan →</button><button class="secondary" id="reset">Reset choices</button></div>
+      <div class="result" id="result" aria-live="polite"></div>
+      <div class="note">Study content in this prototype is a starter demonstration. Confirm your school’s exact MP Board syllabus and current exam blueprint before relying on chapter priority or marks predictions.</div>
+    </div>
+  </section>
+  <section>
+    <div class="section-head"><div><h2>Small steps count</h2><p>Make the next study session easier to begin.</p></div></div>
+    <div class="subjects">
+      <div class="subject" style="background:#f0f8f0"><div class="subject-icon" style="background:#d7eedb">🌿</div><h3>No pressure to finish everything</h3><p>Choose one concept, one practice task and one quick recap.</p></div>
+      <div class="subject" style="background:#f0f5ff"><div class="subject-icon" style="background:#dceaff">💡</div><h3>Understand before memorising</h3><p>Use examples, then practise writing answers in board-exam language.</p></div>
+    </div>
+  </section>
+</main>
+<footer class="wrap footer"><strong>BrightBoard</strong> — a student-built learning project. Not affiliated with MPBSE. <br>Designed for calm, focused Class 12 Physics & Chemistry practice.</footer>
+<script>
+const chapterData = {
+ chem:[
+  ["Solutions","Concentration, Raoult’s law, colligative properties"],
+  ["Electrochemistry","Cells, electrode potential, conductivity"],
+  ["Chemical Kinetics","Rate law, order, half-life"],
+  ["d- and f-Block Elements","Properties and trends"],
+  ["Coordination Compounds","Nomenclature, bonding, isomerism"],
+  ["Haloalkanes and Haloarenes","Reactions and mechanisms"],
+  ["Alcohols, Phenols and Ethers","Properties and reactions"],
+  ["Aldehydes, Ketones and Carboxylic Acids","Functional groups and reactions"],
+  ["Amines","Basicity and reactions"],
+  ["Biomolecules","Carbohydrates, proteins, nucleic acids"]
+ ],
+ phy:[
+  ["Electric Charges and Fields","Coulomb’s law and electric field"],
+  ["Electrostatic Potential and Capacitance","Potential, capacitors"],
+  ["Current Electricity","Resistance, circuits, Kirchhoff’s laws"],
+  ["Moving Charges and Magnetism","Magnetic force and fields"],
+  ["Magnetism and Matter","Magnetic properties"],
+  ["Electromagnetic Induction","Faraday’s law and Lenz’s law"],
+  ["Alternating Current","AC circuits and power"],
+  ["Electromagnetic Waves","Properties and spectrum"],
+  ["Ray Optics and Optical Instruments","Mirrors, lenses, instruments"],
+  ["Wave Optics","Interference and diffraction"],
+  ["Dual Nature of Radiation and Matter","Photoelectric effect"],
+  ["Atoms","Atomic models and spectra"],
+  ["Nuclei","Binding energy and radioactivity"],
+  ["Semiconductor Electronics","Diodes and logic gates"]
+ ]
+};
+const state={subject:null,chapter:0,mode:"learn",time:45};
+const el=id=>document.getElementById(id);
+function setSubject(s){state.subject=s;state.chapter=0;document.querySelectorAll("[data-subject]").forEach(b=>b.classList.toggle("selected",b.dataset.subject===s));el("planner").classList.remove("hidden");el("plannerTitle").textContent=(s==="chem"?"Chemistry":"Physics")+" study planner";el("plannerSub").textContent=s==="chem"?"Choose a Chemistry chapter and how you want to study.":"Choose a Physics chapter and how you want to study.";renderChapters();el("planner").scrollIntoView({behavior:"smooth",block:"start"});el("result").classList.remove("show")}
+function renderChapters(){el("chapters").innerHTML="";chapterData[state.subject].forEach((c,i)=>{const b=document.createElement("button");b.className="choice"+(i===state.chapter?" active":"");b.innerHTML=`${c[0]}<small>${c[1]}</small>`;b.onclick=()=>{state.chapter=i;renderChapters();el("result").classList.remove("show")};el("chapters").appendChild(b)})}
+document.querySelectorAll("[data-subject]").forEach(b=>b.addEventListener("click",()=>setSubject(b.dataset.subject)));
+el("changeSubject").onclick=()=>{el("planner").classList.add("hidden");document.querySelectorAll("[data-subject]").forEach(b=>b.classList.remove("selected"));window.scrollTo({top:0,behavior:"smooth"})};
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;document.querySelectorAll("[data-mode]").forEach(x=>x.classList.toggle("active",x===b));el("result").classList.remove("show")});
+document.querySelectorAll("[data-time]").forEach(b=>b.onclick=()=>{state.time=Number(b.dataset.time);document.querySelectorAll("[data-time]").forEach(x=>x.classList.toggle("active",x===b));el("result").classList.remove("show")});
+function buildPlan(){
+ if(!state.subject){alert("Choose Chemistry or Physics first.");return}
+ const c=chapterData[state.subject][state.chapter], subject=state.subject==="chem"?"Chemistry":"Physics";
+ const modes={
+ learn:{title:"Learn from zero",tiny:["Read the chapter overview and learn 2 key terms.","Study one simple worked example.","Explain the idea in your own words."],normal:["Start with the basic concept and definitions.","Study 2 worked examples or reactions/formulas.","Solve 3 basic questions and check your understanding."]},
+ exam:{title:"Exam preparation",tiny:["Recall 3 key definitions or formulas.","Attempt 2 exam-style questions.","Check answer structure and mark weak points."],normal:["Review key definitions, formulas/reactions and conditions.","Practise 4–6 exam-style questions.","Write one long answer or numerical without notes.","Check mistakes and create a final quick-recall list."]},
+ revise:{title:"Revision",tiny:["Close notes and recall the main idea.","Write 5 keywords/formulas from memory.","Check notes and correct gaps."],normal:["Use active recall before reading notes.","Revise definitions, formulas/reactions and common mistakes.","Solve 5 questions without looking at notes.","Finish with a one-minute summary."]},
+ test:{title:"Self-test",tiny:["Attempt 3 short questions without notes.","Mark each answer honestly.","Review the one weakest concept."],normal:["Attempt 5–8 questions without notes.","Check answers and label each mistake.","Relearn the weakest concept.","Retest with 2 fresh questions."]}
+ };
+ const m=modes[state.mode], isTiny=state.time===10, isSmall=state.time===25;
+ let tasks;
+ if(isTiny) tasks=m.tiny;
+ else if(isSmall) tasks=[m.normal[0],m.normal[1],m.normal[m.normal.length-1]];
+ else tasks=m.normal;
+ let title= `${m.title}: ${c[0]}`;
+ let intro=`${subject} · ${state.time} minutes · ${c[1]}`;
+ let html=`<h3>${title}</h3><p>${intro}</p><ul>`;
+ const each=Math.max(2,Math.floor(state.time/tasks.length));
+ tasks.forEach((t,i)=>html+=`<li><strong>${Math.min(state.time,i*each+1)}–${Math.min(state.time,(i+1)*each)} min:</strong> ${t}</li>`);
+ html+=`</ul><p><strong>Finish line:</strong> Write down one thing you understand and one thing you still need to practise.</p>`;
+ if(state.subject==="chem"&&c[0]==="Solutions"){html+=`<p><strong>Suggested focus:</strong> concentration terms, Raoult’s law, osmotic pressure and colligative properties. Select the exact subtopic you need in your own notes before starting.</p>`}
+ html+=`<div class="actions"><button class="secondary" id="copyPlan">Copy this plan</button><button class="secondary" id="hidePlan">Close plan</button></div>`;
+ el("result").innerHTML=html;el("result").classList.add("show");el("result").scrollIntoView({behavior:"smooth",block:"nearest"});
+ el("copyPlan").onclick=async()=>{const text=`${title}\n${intro}\n${tasks.map((t,i)=>`${i+1}. ${t}`).join("\n")}\nFinish line: Write one thing understood and one thing to practise.`;try{await navigator.clipboard.writeText(text);el("copyPlan").textContent="Copied ✓"}catch(e){el("copyPlan").textContent="Copy unavailable — select text"}};
+ el("hidePlan").onclick=()=>el("result").classList.remove("show");
+}
+el("generate").onclick=buildPlan;
+el("reset").onclick=()=>{state.chapter=0;state.mode="learn";state.time=45;renderChapters();document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("active",b.dataset.mode==="learn"));document.querySelectorAll("[data-time]").forEach(b=>b.classList.toggle("active",b.dataset.time==="45"));el("result").classList.remove("show")};
+</script>
+</body>
+</html>
